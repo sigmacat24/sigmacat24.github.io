@@ -1,10 +1,189 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Escape Room</title>
-  </head>
-  <body>
-    <h1>Welcome to my Escape Room</h1>
-    <p>My GitHub Pages site is live!</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Escape Room</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg1: #0f2027;
+      --bg2: #203a43;
+      --bg3: #2c5364;
+      --accent: #00ffe1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(-45deg, var(--bg1), var(--bg2), var(--bg3));
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      padding: 80px 20px;
+      text-align: center;
+      animation: fadeDown 1.2s ease forwards;
+    }
+
+    header h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      background: linear-gradient(90deg, #00ffe1, #6effff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      opacity: 0.85;
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 30px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(0,255,225,0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0, 255, 225, 0.25);
+    }
+
+    .card h2 {
+      margin-bottom: 12px;
+      font-size: 1.6rem;
+    }
+
+    .card p {
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+
+    .cta {
+      text-align: center;
+      margin: 80px 20px;
+    }
+
+    .cta button {
+      padding: 16px 40px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background: linear-gradient(90deg, #00ffe1, #6effff);
+      color: #003333;
+      font-weight: 700;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cta button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 15px 40px rgba(0,255,225,0.4);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      opacity: 0.6;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Escape Room</h1>
+    <p>Can you solve the puzzles and escape?</p>
+  </header>
+
+  <section class="container">
+    <div class="card">
+      <h2>🧠 Puzzle Logic</h2>
+      <p>Think outside the box. Each challenge requires clever reasoning and observation.</p>
+    </div>
+
+    <div class="card">
+      <h2>🔐 Hidden Codes</h2>
+      <p>Secrets are everywhere. Look closely, patterns matter more than you think.</p>
+    </div>
+
+    <div class="card">
+      <h2>⏱ Time Pressure</h2>
+      <p>The clock is ticking. Solve everything before time runs out.</p>
+    </div>
+  </section>
+
+  <div class="cta">
+    <button onclick="startGame()">Start Escape</button>
+  </div>
+
+  <footer>
+    © 2026 Escape Room • Built on GitHub Pages
+  </footer>
+
+  <script>
+    function startGame() {
+      alert("The escape begins... 👀🔐");
+    }
+  </script>
+
+</body>
 </html>
