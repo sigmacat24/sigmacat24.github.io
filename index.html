@@ -74,7 +74,6 @@
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
-    /* FIX: overlay no longer blocks clicks */
     .card::before {
       content: "";
       position: absolute;
@@ -87,7 +86,7 @@
       );
       opacity: 0;
       transition: opacity 0.4s ease;
-      pointer-events: none; /* 🔑 KEY FIX */
+      pointer-events: none;
     }
 
     .card:hover::before {
@@ -119,7 +118,8 @@
       font-weight: 700;
       text-decoration: none;
       position: relative;
-      z-index: 1; /* extra safety */
+      z-index: 1;
+      cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -133,6 +133,23 @@
       padding: 30px;
       opacity: 0.6;
       font-size: 0.9rem;
+    }
+
+    /* 🔖 VERSION INDICATOR */
+    .version {
+      position: fixed;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      opacity: 0.85;
+      z-index: 9999;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -166,5 +183,9 @@
     © 2026 sigmacat24 • Built on GitHub Pages
   </footer>
 
+  <!-- VERSION TAG -->
+  <div class="version">v1.1.0</div>
+
 </body>
 </html>
+
