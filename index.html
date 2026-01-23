@@ -16,82 +16,124 @@
       --accent: #00ffe1;
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
     body {
-      min-height:100vh;
+      min-height: 100vh;
       background: linear-gradient(-45deg, var(--bg1), var(--bg2), var(--bg3));
       background-size: 400% 400%;
       animation: gradientMove 15s ease infinite;
-      color:white;
+      color: white;
     }
 
     @keyframes gradientMove {
-      0% { background-position:0% 50%; }
-      50% { background-position:100% 50%; }
-      100% { background-position:0% 50%; }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     header {
-      text-align:center;
-      padding:60px 20px;
+      text-align: center;
+      padding: 60px 20px;
     }
+
     header h1 {
       font-size: clamp(2.5rem, 6vw, 4rem);
       background: linear-gradient(90deg, #00ffe1, #6effff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    header p { opacity:0.85; margin-top:12px; font-size:1.2rem; }
+
+    header p {
+      opacity: 0.85;
+      margin-top: 12px;
+      font-size: 1.2rem;
+    }
 
     .container {
-      max-width:1100px;
-      margin:auto;
-      padding:40px 20px;
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-      gap:30px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
     }
 
     .card {
-      background: rgba(255,255,255,0.08);
+      position: relative;
+      background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(12px);
-      border-radius:20px;
-      padding:25px;
+      border-radius: 20px;
+      padding: 25px;
+      overflow: hidden;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
-      position:relative;
-      overflow:hidden;
     }
 
+    /* FIX: overlay no longer blocks clicks */
     .card::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(120deg, transparent, rgba(0,255,225,0.3), transparent);
-      opacity:0;
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(0, 255, 225, 0.3),
+        transparent
+      );
+      opacity: 0;
       transition: opacity 0.4s ease;
+      pointer-events: none; /* 🔑 KEY FIX */
     }
 
-    .card:hover::before { opacity:1; }
-    .card:hover { transform: translateY(-12px) scale(1.02); box-shadow:0 20px 60px rgba(0,255,225,0.25); }
+    .card:hover::before {
+      opacity: 1;
+    }
 
-    .card h2 { margin-bottom:10px; font-size:1.5rem; }
-    .card p { opacity:0.85; line-height:1.6; }
+    .card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0, 255, 225, 0.25);
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    .card p {
+      opacity: 0.85;
+      line-height: 1.6;
+    }
 
     .card a.btn {
-      display:inline-block;
-      margin-top:15px;
-      padding:12px 25px;
-      border-radius:50px;
-      background: linear-gradient(90deg,#00ffe1,#6effff);
-      color:#003333;
-      font-weight:700;
-      text-decoration:none;
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 25px;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #00ffe1, #6effff);
+      color: #003333;
+      font-weight: 700;
+      text-decoration: none;
+      position: relative;
+      z-index: 1; /* extra safety */
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .card a.btn:hover { transform:scale(1.05); box-shadow:0 10px 25px rgba(0,255,225,0.4); }
+    .card a.btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 255, 225, 0.4);
+    }
 
-    footer { text-align:center; padding:30px; opacity:0.6; font-size:0.9rem; }
+    footer {
+      text-align: center;
+      padding: 30px;
+      opacity: 0.6;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 
@@ -106,15 +148,18 @@
     <div class="card">
       <h2>SUBLEVEL</h2>
       <p>Next level of the escape room challenge.</p>
-      <a href="https://sigmacat24.github.io/SUBLEVEL/" class="btn">Visit Project</a>
+      <a href="https://sigmacat24.github.io/SUBLEVEL/" class="btn">
+        Visit Project
+      </a>
     </div>
 
     <div class="card">
       <h2>PROJECT TWO</h2>
       <p>A second project website. Replace with your own content.</p>
-      <a href="/PROJECT-TWO/" class="btn">Visit Project</a>
+      <a href="https://sigmacat24.github.io/PROJECT-TWO/" class="btn">
+        Visit Project
+      </a>
     </div>
-
   </section>
 
   <footer>
